@@ -2,6 +2,7 @@ import classNames from "classnames";
 import styles from "./nav.module.scss";
 import Logo from "@/assets/logo.svg?react";
 import { RiShoppingCart2Line, RiShoppingCartFill } from "react-icons/ri";
+import { Busca } from "../busca";
 
 const iconeProps = {
   color: "white",
@@ -25,6 +26,9 @@ export const NavBar = () => {
         </div>
       </div>
       <div className={styles.busca}>
+        <Busca />
+      </div>
+      <div className={styles.icones}>
         <a href="/carrinho">
           {window.location.pathname === "/carrinho" ? (
             <RiShoppingCartFill {...iconeProps} />
@@ -33,7 +37,6 @@ export const NavBar = () => {
           )}{" "}
         </a>
       </div>
-      <div className={styles.icones}></div>
     </nav>
   );
 };
