@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/footer";
+import PaginaPadrao from "./components/paginaPadrao";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Footer />}>
+        <Route path="/" element={<PaginaPadrao />}>
           <Route index element={<div></div>} />
         </Route>
       </Routes>
@@ -13,4 +14,4 @@ const Router = () => {
   );
 };
 
-export default router;
+export default Router;
