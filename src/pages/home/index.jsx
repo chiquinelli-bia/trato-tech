@@ -1,19 +1,11 @@
 import Header from "../../components/header";
 import styles from "./home.module.scss";
 import relogio from "../../assets/inicial.png";
-import automotivoThumb from "assets/categorias/thumbnail/automotivo.png";
-import eletronicosThumb from "assets/categorias/thumbnail/eletronicos.png";
-import escritorioThumb from "assets/categorias/thumbnail/escritorio.png";
-import jogosThumb from "assets/categorias/thumbnail/jogos.png";
-import somThumb from "assets/categorias/thumbnail/som.png";
-import automotivoHeader from "assets/categorias/header/automotivo.png";
-import eletronicosHeader from "assets/categorias/header/eletronicos.png";
-import escritorioHeader from "assets/categorias/header/escritorio.png";
-import jogosHeader from "assets/categorias/header/jogos.png";
-import somHeader from "assets/categorias/header/som.png";
 import categorias from "./dataCategoria";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <div>
       <Header
@@ -22,6 +14,24 @@ export default function Home() {
         imagem={relogio}
         className={styles.header}
       />
+      <div className={styles.categorias}>
+        <div className={styles["categorias-title"]}>
+          <h1>Categorias</h1>
+        </div>
+        <div className={styles["categorias-container"]}>
+          {categorias.map((categoria, index) => {
+            return (
+              <div
+                key={index}
+                onClick={() => navigate(`/categoria/${categoria.id}`)}
+              >
+                <img src={categoria.thumbnail} alt={categoria.nome} />
+                <h1>{categoria.nome}</h1>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
