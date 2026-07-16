@@ -2,15 +2,25 @@ import styles from "./item.module.scss";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FaCartPlus } from "react-icons/fa";
 import { mudarFavorito } from "@/store/reducers/itens.js";
-import { useDispatch } from "react-redux";
+import { mudarCarrinho } from "@/store/reducers/carrinho.js";
+import { useDispatch, useSelector } from "react-redux";
 
 const iconeProps = { size: 24, color: "#041833" };
 
 const Item = ({ titulo, foto, preco, descricao, favorito, id }) => {
   const dispatch = useDispatch();
+
+  const estaNoCarrinho = useSelector((state) =>
+    state.carrinho.some((itemNoCarrinho) => itemNoCarrinho.id === id),
+  );
+
   function resolverFavorito() {
     dispatch(mudarFavorito(id));
   }
+  function resolverCarrinho() {
+    dispatch(mudarCarrinho(id));
+  }
+
   return (
     <div className={styles.item}>
       <div className={styles["item-imagem"]}>
@@ -40,8 +50,9 @@ const Item = ({ titulo, foto, preco, descricao, favorito, id }) => {
             )}
             <FaCartPlus
               {...iconeProps}
-              color={false ? "#1875E8" : iconeProps.color}
+              color={estaNoCarrinho ? "#1875E8" : iconeProps.color}
               className={styles["item-acao"]}
+              onClick={resolverCarrinho}
             />
           </div>
         </div>
