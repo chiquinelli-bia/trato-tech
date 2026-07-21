@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Trato Tech
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Thumbnail do projeto. O título é “Trato Tech — Gerenciamento de Estado com Redux Toolkit” e o subtítulo é "adaptado por Bianca Chiquinelli".](thumb.png)
 
-## Available Scripts
+Aplicação de e-commerce desenvolvida em `React`, utilizando `Redux Toolkit` para gerenciamento de estado global. O projeto permite navegar por categorias, pesquisar produtos, favoritar itens e gerenciar um carrinho de compras com estado compartilhado entre diferentes páginas.
 
-In the project directory, you can run:
+## Tecnologias
 
-### `yarn start`
+- React
+- Redux Toolkit
+- React Router DOM
+- Sass
+- Classnames
+- UUID
+- Vite
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Funcionalidades
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Navegação entre páginas com `React Router`.
+- Listagem de produtos por categoria.
+- Busca dinâmica de produtos.
+- Carrinho de compras com atualização de quantidade e cálculo automático do subtotal.
+- Sistema de favoritos compartilhado entre diferentes páginas.
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 💡 Destaques técnicos
 
-### `yarn build`
+### Arquitetura de gerenciamento de estado com Redux Toolkit
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A aplicação foi estruturada utilizando `Redux Toolkit` para centralizar o gerenciamento de estado, separando as responsabilidades da aplicação em reducers independentes para categorias, itens, carrinho e busca.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+_Recursos implementados:_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Estado global compartilhado entre diferentes páginas da aplicação, garantindo consistência das informações sem necessidade de prop drilling.
+- Organização da lógica da aplicação em reducers especializados para categorias, itens, carrinho e busca.
+- Centralização do gerenciamento de estado utilizando `Redux Toolkit`, facilitando a manutenção e a evolução da aplicação.
+- Atualização previsível do estado por meio de reducers especializados, mantendo o fluxo de dados desacoplado dos componentes.
 
-### `yarn eject`
+### Sistema de busca global
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+A funcionalidade de busca foi desenvolvida para ser reutilizada em diferentes páginas da aplicação, mantendo um único estado global para o termo pesquisado.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+_Recursos implementados:_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Reducer dedicado ao gerenciamento da busca.
+- Reutilização do mesmo componente de pesquisa nas páginas de categorias e carrinho.
+- Filtragem dinâmica utilizando expressões regulares `RegExp`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Estrutura da aplicação
 
-## Learn More
+A estrutura da aplicação foi reorganizada para reduzir duplicação de código e facilitar futuras evoluções.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+_Melhorias implementadas:_
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Componentização da interface visando reutilização.
+- Separação entre páginas, componentes e gerenciamento de estado.
+- Refatoração dos componentes para integração com Redux.
+- Centralização da navegação utilizando React Router.
+- Organização do código para facilitar manutenção e escalabilidade.
 
-### Code Splitting
+## Acesso ao projeto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Deploy:** <https://trato-tech-pink.vercel.app/>
 
-### Analyzing the Bundle Size
+### Executar localmente
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+git clone <https://github.com/chiquinelli-bia/trato-tech>
 
-### Making a Progressive Web App
+cd trato-tech
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+npm install
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+npm run dev
+```
