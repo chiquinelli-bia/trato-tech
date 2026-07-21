@@ -2,6 +2,7 @@ import Header from "@/components/header";
 import Item from "@/components/item";
 import styles from "./carrinho.module.scss";
 import { useSelector } from "react-redux";
+import Button from "../../components/button";
 
 export default function Carrinho() {
   const { carrinho, total } = useSelector((state) => {
@@ -32,10 +33,13 @@ export default function Carrinho() {
         ))}
         <div className={styles.total}>
           <strong>Resumo da Compra</strong>
+          <span>
+            SubTotal: <strong>R$ {total.toFixed(2)}</strong>
+          </span>
         </div>
-        <span>
-          SubTotal: <strong>R$ {total.toFixed(2)}</strong>
-        </span>
+        <Button onClick={() => dispatch(resetarCarrinho())}>
+          Finalizar compra
+        </Button>
       </div>
     </div>
   );
