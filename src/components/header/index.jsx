@@ -2,11 +2,13 @@ import styles from "./header.module.scss";
 import TituloComImagem from "./tituloComImagem";
 import TituloSemImagem from "./tituloSemImagem";
 
-const Header = ({ className = "", titulo, descricao, imagem }) => {
+const Header = ({ className = "", titulo, descricao, imagem, children }) => {
   return (
     <header className={`${styles.header} ${className}`}>
       {titulo && !imagem && (
-        <TituloSemImagem titulo={titulo} descricao={descricao} />
+        <TituloSemImagem titulo={titulo} descricao={descricao}>
+          {children}
+        </TituloSemImagem>
       )}
       {titulo && imagem && (
         <TituloComImagem
@@ -14,7 +16,9 @@ const Header = ({ className = "", titulo, descricao, imagem }) => {
           descricao={descricao}
           imagem={imagem}
           className={className}
-        />
+        >
+          {children}
+        </TituloComImagem>
       )}
     </header>
   );
