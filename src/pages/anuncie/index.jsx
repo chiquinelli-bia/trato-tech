@@ -7,9 +7,7 @@ import { cadastrarItem } from "@/store/reducers/itens";
 import { useParams } from "react-router-dom";
 
 const Anuncie = () => {
-  const categorias = useSelector((state) =>
-    state.map(({ nome, id }) => ({ nome, id })),
-  );
+  const categorias = useSelector((state) => state.categorias);
   const { nomeCategoria = "" } = useParams();
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -29,7 +27,7 @@ const Anuncie = () => {
       <form className={styles.formulario} onSubmit={handleSubmit(cadastrar)}>
         <input
           type="text"
-          {...register("nome", { required: true })}
+          {...register("titulo", { required: true })}
           placeholder="Nome do produto"
           alt="Nome do produto"
         />
@@ -41,7 +39,7 @@ const Anuncie = () => {
         />
         <input
           type="text"
-          {...register("imagem", { required: true })}
+          {...register("foto", { required: true })}
           placeholder="URL da imagem do produto"
           alt="URL da imagem do produto"
         />
@@ -52,9 +50,9 @@ const Anuncie = () => {
           <option value="" disabled>
             Selecione a categoria
           </option>
-          {categorias.map((categoria) => (
-            <option value={categoria.id} key={categoria.id}>
-              {categoria.nome}
+          {categorias.map(({ id, nome }) => (
+            <option value={id} key={id}>
+              {nome}
             </option>
           ))}
         </select>
