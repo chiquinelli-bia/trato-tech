@@ -8,7 +8,7 @@ import {
   AiFillEdit,
 } from "react-icons/ai";
 import { FaCartPlus } from "react-icons/fa";
-import { mudarFavorito } from "@/store/reducers/itens.js";
+import { mudarFavorito, mudarItem } from "@/store/reducers/itens.js";
 import { mudarCarrinho, mudarQuantidade } from "@/store/reducers/carrinho.js";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
@@ -49,10 +49,13 @@ const Item = ({
         <AiOutlineCheck
           {...iconeProps}
           className={styles["item-acao"]}
-          onClick={() => setModoDeEdicao(false)}
+          onClick={() => {
+            setModoDeEdicao(false);
+            dispatch(mudarItem({ id, item: { titulo: novoTitulo } }));
+          }}
         />
       ) : (
-        <AiFillEditi
+        <AiFillEdit
           {...iconeProps}
           className={styles["item-acao"]}
           onClick={() => setModoDeEdicao(true)}
