@@ -25,6 +25,8 @@ const Item = ({
   quantidade,
 }) => {
   const dispatch = useDispatch();
+  const [modoDeEdicao, setModoDeEdicao] = useState(false);
+  const [novoTitulo, setNovoTitulo] = useState(titulo);
 
   const estaNoCarrinho = useSelector((state) =>
     state.carrinho.some((itemNoCarrinho) => itemNoCarrinho.id === id),
@@ -47,6 +49,10 @@ const Item = ({
       <div className={styles["item-descricao"]}>
         <div className={styles["item-titulo"]}>
           <h2>{titulo}</h2>
+          <input
+            value={novoTitulo}
+            onChange={(evento) => setNovoTitulo(evento.target.value)}
+          />
           <p>{descricao}</p>
         </div>
         <div className={styles["item-info"]}>

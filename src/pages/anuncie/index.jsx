@@ -5,6 +5,7 @@ import Button from "@/components/button";
 import { useForm } from "react-hook-form";
 import { cadastrarItem } from "@/store/reducers/itens";
 import { useParams } from "react-router-dom";
+import Input from "@/components/input";
 
 const Anuncie = () => {
   const categorias = useSelector((state) => state.categorias);
@@ -25,19 +26,19 @@ const Anuncie = () => {
         descricao="Anuncie seu produto no melhor site do Brasil!"
       />
       <form className={styles.formulario} onSubmit={handleSubmit(cadastrar)}>
-        <input
+        <Input
           type="text"
           {...register("titulo", { required: true })}
           placeholder="Nome do produto"
           alt="Nome do produto"
         />
-        <input
+        <Input
           type="text"
           {...register("descricao", { required: true })}
           placeholder="Descrição do produto"
           alt="Descrição do produto"
         />
-        <input
+        <Input
           type="text"
           {...register("foto", { required: true })}
           placeholder="URL da imagem do produto"
@@ -56,7 +57,7 @@ const Anuncie = () => {
             </option>
           ))}
         </select>
-        <input
+        <Input
           {...register("preco", { required: true, valueAsNumber: true })}
           type="number"
           placeholder="Preço do produto"
