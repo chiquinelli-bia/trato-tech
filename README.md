@@ -2,62 +2,79 @@
 
 ![Thumbnail do projeto. O título é “Trato Tech — Gerenciamento de Estado com Redux Toolkit” e o subtítulo é "adaptado por Bianca Chiquinelli".](thumb.png)
 
-Aplicação de e-commerce desenvolvida em `React`, utilizando `Redux Toolkit` para gerenciamento de estado global. O projeto permite navegar por categorias, pesquisar produtos, favoritar itens e gerenciar um carrinho de compras com estado compartilhado entre diferentes páginas.
+Aplicação de e-commerce desenvolvida em **React** com gerenciamento de estado global utilizando **Redux Toolkit**. O projeto permite navegar por categorias, pesquisar produtos, favoritar itens e gerenciar um carrinho de compras compartilhado entre diferentes páginas.
+
+O principal objetivo foi aprofundar o entendimento sobre **imutabilidade de estado** utilizando **Immer**, explorando a criação e evolução de reducers em cenários reais.
 
 ## Tecnologias
 
 - React
 - Redux Toolkit
+- Immer
+- React Hook Form
 - React Router DOM
 - Sass
-- Classnames
-- UUID
 - Vite
+
+---
 
 ## Funcionalidades
 
-- Navegação entre páginas com `React Router`.
-- Listagem de produtos por categoria.
-- Busca dinâmica de produtos.
-- Carrinho de compras com atualização de quantidade e cálculo automático do subtotal.
-- Sistema de favoritos compartilhado entre diferentes páginas.
+- Navegação entre páginas com React Router.
+- Listagem e busca dinâmica de produtos.
+- Sistema de favoritos compartilhado.
+- Carrinho de compras com atualização automática do subtotal.
+- Cadastro de novos produtos.
+- Estrutura inicial para edição e exclusão de produtos.
 
 ---
 
 ## 💡 Destaques técnicos
 
-### Arquitetura de gerenciamento de estado com Redux Toolkit
+### Gerenciamento de estado com Redux Toolkit e Immer
 
-A aplicação foi estruturada utilizando `Redux Toolkit` para centralizar o gerenciamento de estado, separando as responsabilidades da aplicação em reducers independentes para categorias, itens, carrinho e busca.
+A aplicação utiliza **Redux Toolkit** para centralizar o estado global e **Immer** para simplificar atualizações imutáveis, mantendo reducers mais legíveis e previsíveis.
 
-_Recursos implementados:_
+**Implementações:**
 
-- Estado global compartilhado entre diferentes páginas da aplicação, garantindo consistência das informações sem necessidade de prop drilling.
-- Organização da lógica da aplicação em reducers especializados para categorias, itens, carrinho e busca.
-- Centralização do gerenciamento de estado utilizando `Redux Toolkit`, facilitando a manutenção e a evolução da aplicação.
-- Atualização previsível do estado por meio de reducers especializados, mantendo o fluxo de dados desacoplado dos componentes.
+- Estado global compartilhado entre carrinho, busca, categorias e itens.
+- Reducers especializados para cada domínio da aplicação.
+- Implementação de operações de cadastro, atualização, exclusão e reset de estado.
+- Atualizações imutáveis utilizando as abstrações fornecidas pelo Immer.
 
-### Sistema de busca global
+### Formulários com React Hook Form
 
-A funcionalidade de busca foi desenvolvida para ser reutilizada em diferentes páginas da aplicação, mantendo um único estado global para o termo pesquisado.
+Foi desenvolvida uma página de cadastro de produtos utilizando **React Hook Form**, integrando validação e gerenciamento de formulário ao fluxo da aplicação.
 
-_Recursos implementados:_
+**Implementações:**
 
-- Reducer dedicado ao gerenciamento da busca.
-- Reutilização do mesmo componente de pesquisa nas páginas de categorias e carrinho.
-- Filtragem dinâmica utilizando expressões regulares `RegExp`.
+- Controle completo dos campos com React Hook Form.
+- Validação de entradas, incluindo seleção obrigatória de categorias.
+- Integração do formulário com o estado global por meio de actions do Redux.
 
-### Estrutura da aplicação
+### Evolução da arquitetura
 
-A estrutura da aplicação foi reorganizada para reduzir duplicação de código e facilitar futuras evoluções.
+Durante o desenvolvimento, a estrutura da aplicação foi refatorada para reduzir acoplamento e facilitar manutenção.
 
-_Melhorias implementadas:_
+**Melhorias implementadas:**
 
-- Componentização da interface visando reutilização.
-- Separação entre páginas, componentes e gerenciamento de estado.
-- Refatoração dos componentes para integração com Redux.
-- Centralização da navegação utilizando React Router.
-- Organização do código para facilitar manutenção e escalabilidade.
+- Refatoração de componentes para consumo do estado via `useSelector`.
+- Criação de componentes reutilizáveis para formulários e interface.
+- Organização da lógica de negócio em reducers independentes.
+- Separação entre interface, gerenciamento de estado e regras de negócio.
+
+---
+
+## Aprendizados
+
+Este projeto foi utilizado para explorar conceitos importantes de gerenciamento de estado em aplicações React, com foco em:
+
+- Imutabilidade utilizando Immer.
+- Escrita de reducers previsíveis e organizados.
+- Integração entre Redux Toolkit e React Hook Form.
+- Compartilhamento de estado entre diferentes páginas da aplicação.
+
+---
 
 ## Acesso ao projeto
 
