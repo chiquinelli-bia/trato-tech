@@ -4,6 +4,7 @@ import PaginaPadrao from "./components/paginaPadrao";
 import Home from "./pages/home";
 import Categoria from "./pages/categorias";
 import Carrinho from "./pages/carrinho";
+import Anuncie from "./pages/anuncie";
 
 const Router = () => {
   return (
@@ -13,6 +14,8 @@ const Router = () => {
           <Route index element={<Home />} />
           <Route path="/categoria/:nomeCategoria" element={<Categoria />} />
           <Route path="/carrinho" element={<Carrinho />} />
+          <Route path="anuncie/:nomeCategoria" element={<Anuncie />} />
+          <Route path="/anuncie" element={<Anuncie />} />
         </Route>
       </Routes>
     </BrowserRouter>
