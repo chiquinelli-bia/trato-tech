@@ -1,13 +1,30 @@
-import Header from "../../components/header";
+import Header from "@/components/header";
 import styles from "./home.module.scss";
-import relogio from "../../assets/inicial.png";
+import relogio from "@/assets/inicial.png";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "@/components/button";
+import { useCallback, useEffect } from "react";
+import instance from "@/common/config/api";
+import { adicionarCategorias } from "@/store/reducers/categorias";
+import { adicionarItens } from "@/store/reducers/itens";
 
 export default function Home() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const categorias = useSelector((state) => state.categorias);
+
+  useEffect(() => {
+    async function carregarDados() {
+      const categorias = await instance.get("/categorias");
+      dispatch(adicionarCategorias(categorias.data));
+
+      const itens = await instance.get("/itens");
+      dispatch(adicionarItens(itens.data));
+    }
+
+    carregarDados();
+  }, [dispatch]);
 
   return (
     <div>
