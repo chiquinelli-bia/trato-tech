@@ -24,9 +24,17 @@ const itensSlice = createSlice({
       const index = state.findIndex((item) => item.id === payload.id);
       state.splice(index, 1);
     },
+    adicionarItens: (state, { payload }) => {
+      state.push(...payload);
+    },
   },
 });
-export const { mudarFavorito, cadastrarItem, mudarItem, deletarItem } =
-  itensSlice.actions;
+export const {
+  mudarFavorito,
+  cadastrarItem,
+  mudarItem,
+  deletarItem,
+  adicionarItens,
+} = itensSlice.actions;
 
 export default itensSlice.reducer;
