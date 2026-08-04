@@ -4,10 +4,9 @@ import relogio from "@/assets/inicial.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@/components/button";
-import { useCallback, useEffect } from "react";
-import instance from "@/common/config/api";
-import { adicionarCategorias } from "@/store/reducers/categorias";
-import { adicionarItens } from "@/store/reducers/itens";
+import { useEffect } from "react";
+import { buscarCategorias } from "@/store/reducers/categorias";
+import { buscarItens } from "@/store/reducers/itens";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -15,15 +14,8 @@ export default function Home() {
   const categorias = useSelector((state) => state.categorias);
 
   useEffect(() => {
-    async function carregarDados() {
-      const categorias = await instance.get("/categorias");
-      dispatch(adicionarCategorias(categorias.data));
-
-      const itens = await instance.get("/itens");
-      dispatch(adicionarItens(itens.data));
-    }
-
-    carregarDados();
+    dispatch(buscarCategorias());
+    dispatch(buscarItens());
   }, [dispatch]);
 
   return (
