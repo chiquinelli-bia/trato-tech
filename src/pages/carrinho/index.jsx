@@ -1,10 +1,12 @@
 import Header from "@/components/header";
 import Item from "@/components/item";
 import styles from "./carrinho.module.scss";
-import { useSelector } from "react-redux";
-import Button from "../../components/button";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "@/components/button";
+import { resetarCarrinho } from "@/store/reducers/carrinho";
 
 export default function Carrinho() {
+  const dispatch = useDispatch();
   const { carrinho, total } = useSelector((state) => {
     const regexp = new RegExp(state.busca, "i");
     let total = 0;
