@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { v4 as uuid } from "uuid";
 import itensService from "../../services/itensService";
+import { createStandaloneToast } from "@chakra-ui/toast";
+
+const { toast } = createStandaloneToast();
 
 export const buscarItens = createAsyncThunk(
   "itens/buscar",
@@ -25,18 +28,48 @@ const itensSlice = createSlice({
       Object.assign(state[index], payload.item);
     },
     deletarItem: (state, { payload }) => {
-      const index = state.findIndex((item) => item.id === payload.id);
-      state.splice(index, 1);
+      const index = state.findIndex((item) => item.id === payload);
+
+      if (index !== -1) {
+        state.splice(index, 1);
+      }
     },
     adicionarItens: (state, { payload }) => {
       state.push(...payload);
     },
   },
+
   extraReducers: (builder) => {
-    builder.addCase(buscarItens.fulfilled, (state, { payload }) => {
-      state.length = 0;
-      state.push(...payload);
-    });
+    builder
+      .addCase(buscarItens.fulfilled, (state, { payload }) => {
+        toast({
+          title: "Sucesso!",
+          description: "Itens carregados com sucesso!",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+        state.length = 0;
+        return payload;
+      })
+      .addCase(buscarItens.pending, (state, { payload }) => {
+        toast({
+          title: "Carregando",
+          description: "Carregando Itens",
+          status: "loading",
+          duration: 2000,
+          isClosable: true,
+        });
+      })
+      .addCase(buscarItens.rejected, (state, { payload }) => {
+        toast({
+          title: "Erro",
+          description: "Erro na busca de Itens",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      });
   },
 });
 
