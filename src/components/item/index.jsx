@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 import { memo, useState } from "react";
 import Input from "../input";
+import { removerItemCarrinho } from "@/store/reducers/carrinho";
 
 const iconeProps = { size: 24, color: "#041833" };
 const quantidadeProps = { size: 32, color: "#1875E8" };
@@ -37,6 +38,10 @@ const Item = ({
   const [modoDeEdicao, setModoDeEdicao] = useState(false);
   const [novoTitulo, setNovoTitulo] = useState(titulo);
 
+  const deletarItemCompleto = (id) => (dispatch) => {
+    dispatch(removerItemCarrinho(id));
+    dispatch(deletarItem(id));
+  };
   const estaNoCarrinho = useSelector((state) =>
     state.carrinho.some((itemNoCarrinho) => itemNoCarrinho.id === id),
   );
@@ -75,7 +80,7 @@ const Item = ({
       <AiFillCloseCircle
         {...iconeProps}
         className={`${styles["item-acao"]} ${styles["item-deletar"]}`}
-        onClick={() => dispatch(deletarItem(id))}
+        onClick={() => dispatch(deletarItemCompleto(id))}
       />
       <div className={styles["item-imagem"]}>
         <img src={foto} alt={titulo} />

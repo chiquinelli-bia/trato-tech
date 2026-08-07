@@ -2,32 +2,32 @@
 
 ![Thumbnail do projeto. O título é “Trato Tech — Gerenciamento de Estado com Redux Toolkit” e o subtítulo é "adaptado por Bianca Chiquinelli".](thumb.png)
 
-Aplicação de e-commerce desenvolvida em **React** com gerenciamento de estado global utilizando **Redux Toolkit**. O projeto permite navegar por categorias, pesquisar produtos, favoritar itens e gerenciar um carrinho de compras compartilhado entre diferentes páginas.
+Aplicação de e-commerce desenvolvida em React, com gerenciamento de estado global utilizando Redux Toolkit. O projeto permite navegar por categorias, pesquisar produtos, favoritar itens e gerenciar um carrinho de compras compartilhado entre diferentes páginas.
 
-O principal objetivo foi aprofundar o entendimento sobre **imutabilidade de estado** utilizando **Immer**, explorando a criação e evolução de reducers em cenários reais.
+O foco do desenvolvimento foi aprofundar o uso de Redux Toolkit, explorando imutabilidade com Immer, middlewares assíncronos com Redux Thunk e a organização de uma arquitetura escalável para gerenciamento de estado.
 
 ## Tecnologias
 
 - React
 - Redux Toolkit
+- Redux Thunk
 - Immer
 - React Hook Form
 - React Router DOM
+- Axios
 - Sass
 - Vite
-
----
 
 ## Funcionalidades
 
 - Navegação entre páginas com React Router.
 - Listagem e busca dinâmica de produtos.
 - Sistema de favoritos compartilhado.
-- Carrinho de compras com atualização automática do subtotal.
 - Cadastro de novos produtos.
-- Estrutura inicial para edição e exclusão de produtos.
-
----
+- edição e exclusão de produtos.
+- Filtragem por categorias.
+- Carrinho de compras compartilhado entre páginas.
+- Feedback visual para ações da aplicação através de Toasts.
 
 ## 💡 Destaques técnicos
 
@@ -42,15 +42,12 @@ A aplicação utiliza **Redux Toolkit** para centralizar o estado global e **Imm
 - Implementação de operações de cadastro, atualização, exclusão e reset de estado.
 - Atualizações imutáveis utilizando as abstrações fornecidas pelo Immer.
 
-### Formulários com React Hook Form
+### Fluxo assíncrono com Redux Thunk
 
-Foi desenvolvida uma página de cadastro de produtos utilizando **React Hook Form**, integrando validação e gerenciamento de formulário ao fluxo da aplicação.
-
-**Implementações:**
-
-- Controle completo dos campos com React Hook Form.
-- Validação de entradas, incluindo seleção obrigatória de categorias.
-- Integração do formulário com o estado global por meio de actions do Redux.
+- Implementação de **middlewares** para carregamento assíncrono de categorias e produtos.
+- Separação entre lógica de busca de dados e componentes de interface.
+- Tratamento completo dos estados **pending**, **fulfilled** e **rejected** utilizando `extraReducers`.
+- Feedback ao usuário durante operações assíncronas através de Toasts.
 
 ### Evolução da arquitetura
 
@@ -60,21 +57,19 @@ Durante o desenvolvimento, a estrutura da aplicação foi refatorada para reduzi
 
 - Refatoração de componentes para consumo do estado via `useSelector`.
 - Criação de componentes reutilizáveis para formulários e interface.
-- Organização da lógica de negócio em reducers independentes.
-- Separação entre interface, gerenciamento de estado e regras de negócio.
 
----
+* Organização da lógica de negócio fora da interface, facilitando manutenção e evolução da aplicação.
+* Estrutura preparada para expansão de funcionalidades sem aumentar a complexidade dos componentes.
 
-## Aprendizados
+### Formulários com React Hook Form
 
-Este projeto foi utilizado para explorar conceitos importantes de gerenciamento de estado em aplicações React, com foco em:
+Foi desenvolvida uma página de cadastro de produtos utilizando **React Hook Form**, integrando validação e gerenciamento de formulário ao fluxo da aplicação.
 
-- Imutabilidade utilizando Immer.
-- Escrita de reducers previsíveis e organizados.
-- Integração entre Redux Toolkit e React Hook Form.
-- Compartilhamento de estado entre diferentes páginas da aplicação.
+**Implementações:**
 
----
+- Controle completo dos campos com React Hook Form.
+- Validação de entradas, incluindo seleção obrigatória de categorias.
+- Integração do formulário com o estado global por meio de actions do Redux.
 
 ## Acesso ao projeto
 
