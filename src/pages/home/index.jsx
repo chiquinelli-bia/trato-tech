@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@/components/button";
 import { useEffect } from "react";
-import { buscarCategorias } from "@/store/reducers/categorias";
+import { carregarCategorias } from "@/store/reducers/categorias";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export default function Home() {
   const categorias = useSelector((state) => state.categorias);
 
   useEffect(() => {
-    dispatch(buscarCategorias());
+    dispatch(carregarCategorias());
   }, [dispatch]);
 
   return (
