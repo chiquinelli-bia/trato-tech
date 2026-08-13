@@ -3,7 +3,7 @@ import categoriasReducer from "./reducers/categorias";
 import itensReducer from "./reducers/itens";
 import carrinhoReducer from "./reducers/carrinho";
 import buscaReducer from "./reducers/busca";
-import { listener } from "./middlewares/categorias.js";
+import { listenerCategorias } from "./middlewares/categorias.js";
 
 const store = configureStore({
   reducer: {
@@ -13,7 +13,7 @@ const store = configureStore({
     busca: buscaReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(listener.middleware),
+    getDefaultMiddleware().concat(listenerCategorias.middleware),
 });
 
 export default store;
