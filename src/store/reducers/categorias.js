@@ -7,22 +7,24 @@ export const buscarCategorias = createAsyncThunk(
 );
 
 export const carregarCategorias = createAction("categorias/carregarCategorias");
+export const carregarUmaCategoria = createAction(
+  "categorias/carregarUmaCategoria",
+);
 
 const categoriasSlice = createSlice({
   name: "categorias",
   initialState: [],
   reducers: {
-    adicionarCategorias: (state, { payload }) => {
-      state.length = 0;
-      state.push(...payload);
-    },
     adicionarTodasAsCategorias: (state, { payload }) => {
       return payload;
+    },
+    adicionarUmaCategoria: (state, { payload }) => {
+      state.push(payload);
     },
   },
 });
 
-export const { adicionarCategorias, adicionarTodasAsCategorias } =
+export const { adicionarTodasAsCategorias, adicionarUmaCategoria } =
   categoriasSlice.actions;
 
 export default categoriasSlice.reducer;

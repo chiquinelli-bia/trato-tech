@@ -33,6 +33,8 @@ const criarTarefa = async ({
     dispatch(action(res.value));
   }
   if (res.status === "rejected") {
+    console.log("ERRO:", res.error);
+
     toast({
       title: "Erro",
       description: textoErro,
@@ -41,6 +43,7 @@ const criarTarefa = async ({
       isClosable: true,
     });
   }
+  return res;
 };
 
 export default criarTarefa;
