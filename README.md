@@ -4,12 +4,13 @@
 
 Aplicação de e-commerce desenvolvida em React, com gerenciamento de estado global utilizando Redux Toolkit. O projeto permite navegar por categorias, pesquisar produtos, favoritar itens e gerenciar um carrinho de compras compartilhado entre diferentes páginas.
 
-O foco do desenvolvimento foi aprofundar o uso de Redux Toolkit, explorando imutabilidade com Immer, middlewares assíncronos com Redux Thunk e a organização de uma arquitetura escalável para gerenciamento de estado.
+O projeto evoluiu a partir do estudo de Redux Toolkit, Redux Thunk e Listener Middleware, com foco na organização do fluxo de dados assíncronos e na redução de requisições desnecessárias à API.
 
 ## Tecnologias
 
 - React
 - Redux Toolkit
+- Redux Listener Middleware
 - Redux Thunk
 - Immer
 - React Hook Form
@@ -23,11 +24,11 @@ O foco do desenvolvimento foi aprofundar o uso de Redux Toolkit, explorando imut
 - Navegação entre páginas com React Router.
 - Listagem e busca dinâmica de produtos.
 - Sistema de favoritos compartilhado.
-- Cadastro de novos produtos.
-- edição e exclusão de produtos.
+- Cadastro, edição e exclusão de produtos.
 - Filtragem por categorias.
 - Carrinho de compras compartilhado entre páginas.
-- Feedback visual para ações da aplicação através de Toasts.
+- Carregamento assíncrono de categorias e produtos.
+- Feedback visual para operações da aplicação através de Toasts.
 
 ## 💡 Destaques técnicos
 
@@ -41,6 +42,18 @@ A aplicação utiliza **Redux Toolkit** para centralizar o estado global e **Imm
 - Reducers especializados para cada domínio da aplicação.
 - Implementação de operações de cadastro, atualização, exclusão e reset de estado.
 - Atualizações imutáveis utilizando as abstrações fornecidas pelo Immer.
+
+### Listener Middleware e controle de requisições
+
+O **Redux Listener Middleware** foi utilizado para coordenar efeitos a partir das ações disparadas pela aplicação, permitindo controlar quando determinadas requisições devem acontecer.
+
+- Inscrição e desinscrição dinâmica de listeners.
+- Acesso ao estado atual durante a execução dos efeitos.
+- Disparo controlado de novas actions a partir de eventos do Redux.
+- Carregamento apenas dos dados necessários para cada página.
+- Prevenção de buscas duplicadas e requisições desnecessárias à API.
+
+Essa abordagem reduz o acoplamento entre páginas e lógica de carregamento, tornando o fluxo de dados mais previsível e eficiente.
 
 ### Fluxo assíncrono com Redux Thunk
 

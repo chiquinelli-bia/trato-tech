@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "@/components/header";
 import styles from "./categorias.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Item from "@/components/item";
 import Button from "@/components/button";
-import { buscarItens } from "@/store/reducers/itens";
 import { useEffect } from "react";
+import { carregarUmaCategoria } from "@/store/reducers/categorias";
 
 export default function Categoria() {
   const navigate = useNavigate();
@@ -13,6 +13,7 @@ export default function Categoria() {
   const { nomeCategoria } = useParams();
   const { categoria, itens } = useSelector((state) => {
     const regexp = new RegExp(state.busca, "i");
+
     return {
       categoria:
         state.categorias.find((categoria) => categoria.id === nomeCategoria) ||
@@ -21,11 +22,11 @@ export default function Categoria() {
         (item) => item.categoria === nomeCategoria && item.titulo.match(regexp),
       ),
     };
-  });
+  }, shallowEqual);
 
   useEffect(() => {
-    dispatch(buscarItens());
-  }, [dispatch]);
+    dispatch(carregarUmaCategoria(nomeCategoria));
+  }, [dispatch, nomeCategoria]);
 
   return (
     <div>

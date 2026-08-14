@@ -7,6 +7,11 @@ const itensService = {
     return resposta.data;
     console.log(data);
   },
+  buscarDeCategorias: async (nomeCategoria) => {
+    const resposta = await instance.get(`/itens?categoria=${nomeCategoria}`);
+
+    return resposta.data;
+  },
 };
 
 export default itensService;
